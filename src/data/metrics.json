@@ -1,0 +1,311 @@
+{
+  "summary": {
+    "allRegions": {
+      "totalShipments": 2847,
+      "onTimeDeliveryRate": 94.2,
+      "averageTransitTime": 2.3,
+      "openExceptions": 18
+    },
+    "previousPeriod": {
+      "totalShipments": 2534,
+      "onTimeDeliveryRate": 92.1,
+      "averageTransitTime": 2.5,
+      "openExceptions": 15
+    }
+  },
+  "regions": {
+    "Northeast": {
+      "current": {
+        "totalShipments": 742,
+        "onTimeDeliveryRate": 95.8,
+        "averageTransitTime": 1.9,
+        "openExceptions": 3
+      },
+      "previous": {
+        "totalShipments": 634,
+        "onTimeDeliveryRate": 93.2,
+        "averageTransitTime": 2.1,
+        "openExceptions": 2
+      }
+    },
+    "Southeast": {
+      "current": {
+        "totalShipments": 821,
+        "onTimeDeliveryRate": 92.4,
+        "averageTransitTime": 2.7,
+        "openExceptions": 7
+      },
+      "previous": {
+        "totalShipments": 687,
+        "onTimeDeliveryRate": 90.5,
+        "averageTransitTime": 2.9,
+        "openExceptions": 5
+      }
+    },
+    "Midwest": {
+      "current": {
+        "totalShipments": 654,
+        "onTimeDeliveryRate": 93.1,
+        "averageTransitTime": 2.4,
+        "openExceptions": 4
+      },
+      "previous": {
+        "totalShipments": 598,
+        "onTimeDeliveryRate": 91.8,
+        "averageTransitTime": 2.6,
+        "openExceptions": 3
+      }
+    },
+    "West": {
+      "current": {
+        "totalShipments": 630,
+        "onTimeDeliveryRate": 93.7,
+        "averageTransitTime": 2.5,
+        "openExceptions": 4
+      },
+      "previous": {
+        "totalShipments": 615,
+        "onTimeDeliveryRate": 91.2,
+        "averageTransitTime": 2.7,
+        "openExceptions": 5
+      }
+    }
+  },
+  "shipmentVolume": {
+    "allRegions": [
+      { "date": "2026-08-28", "volume": 287 },
+      { "date": "2026-08-29", "volume": 302 },
+      { "date": "2026-08-30", "volume": 295 },
+      { "date": "2026-08-31", "volume": 318 },
+      { "date": "2026-09-01", "volume": 325 },
+      { "date": "2026-09-02", "volume": 311 },
+      { "date": "2026-09-03", "volume": 329 },
+      { "date": "2026-09-04", "volume": 342 },
+      { "date": "2026-09-05", "volume": 315 },
+      { "date": "2026-09-06", "volume": 338 },
+      { "date": "2026-09-07", "volume": 345 },
+      { "date": "2026-09-08", "volume": 356 },
+      { "date": "2026-09-09", "volume": 353 },
+      { "date": "2026-09-10", "volume": 351 },
+      { "date": "2026-09-11", "volume": 350 }
+    ],
+    "Northeast": [
+      { "date": "2026-08-28", "volume": 72 },
+      { "date": "2026-08-29", "volume": 78 },
+      { "date": "2026-08-30", "volume": 71 },
+      { "date": "2026-08-31", "volume": 82 },
+      { "date": "2026-09-01", "volume": 85 },
+      { "date": "2026-09-02", "volume": 79 },
+      { "date": "2026-09-03", "volume": 87 },
+      { "date": "2026-09-04", "volume": 92 },
+      { "date": "2026-09-05", "volume": 84 },
+      { "date": "2026-09-06", "volume": 89 },
+      { "date": "2026-09-07", "volume": 94 },
+      { "date": "2026-09-08", "volume": 98 },
+      { "date": "2026-09-09", "volume": 96 },
+      { "date": "2026-09-10", "volume": 95 },
+      { "date": "2026-09-11", "volume": 93 }
+    ],
+    "Southeast": [
+      { "date": "2026-08-28", "volume": 98 },
+      { "date": "2026-08-29", "volume": 105 },
+      { "date": "2026-08-30", "volume": 102 },
+      { "date": "2026-08-31", "volume": 115 },
+      { "date": "2026-09-01", "volume": 118 },
+      { "date": "2026-09-02", "volume": 110 },
+      { "date": "2026-09-03", "volume": 122 },
+      { "date": "2026-09-04", "volume": 128 },
+      { "date": "2026-09-05", "volume": 118 },
+      { "date": "2026-09-06", "volume": 125 },
+      { "date": "2026-09-07", "volume": 130 },
+      { "date": "2026-09-08", "volume": 138 },
+      { "date": "2026-09-09", "volume": 135 },
+      { "date": "2026-09-10", "volume": 132 },
+      { "date": "2026-09-11", "volume": 133 }
+    ],
+    "Midwest": [
+      { "date": "2026-08-28", "volume": 62 },
+      { "date": "2026-08-29", "volume": 68 },
+      { "date": "2026-08-30", "volume": 65 },
+      { "date": "2026-08-31", "volume": 72 },
+      { "date": "2026-09-01", "volume": 75 },
+      { "date": "2026-09-02", "volume": 71 },
+      { "date": "2026-09-03", "volume": 78 },
+      { "date": "2026-09-04", "volume": 82 },
+      { "date": "2026-09-05", "volume": 76 },
+      { "date": "2026-09-06", "volume": 80 },
+      { "date": "2026-09-07", "volume": 83 },
+      { "date": "2026-09-08", "volume": 87 },
+      { "date": "2026-09-09", "volume": 85 },
+      { "date": "2026-09-10", "volume": 84 },
+      { "date": "2026-09-11", "volume": 83 }
+    ],
+    "West": [
+      { "date": "2026-08-28", "volume": 55 },
+      { "date": "2026-08-29", "volume": 51 },
+      { "date": "2026-08-30", "volume": 57 },
+      { "date": "2026-08-31", "volume": 49 },
+      { "date": "2026-09-01", "volume": 47 },
+      { "date": "2026-09-02", "volume": 51 },
+      { "date": "2026-09-03", "volume": 42 },
+      { "date": "2026-09-04", "volume": 40 },
+      { "date": "2026-09-05", "volume": 41 },
+      { "date": "2026-09-06", "volume": 44 },
+      { "date": "2026-09-07", "volume": 38 },
+      { "date": "2026-09-08", "volume": 33 },
+      { "date": "2026-09-09", "volume": 37 },
+      { "date": "2026-09-10", "volume": 40 },
+      { "date": "2026-09-11", "volume": 41 }
+    ]
+  },
+  "regionalPerformance": [
+    {
+      "region": "Northeast",
+      "shipmentVolume": 742,
+      "onTimeDeliveryRate": 95.8
+    },
+    {
+      "region": "Southeast",
+      "shipmentVolume": 821,
+      "onTimeDeliveryRate": 92.4
+    },
+    {
+      "region": "Midwest",
+      "shipmentVolume": 654,
+      "onTimeDeliveryRate": 93.1
+    },
+    {
+      "region": "West",
+      "shipmentVolume": 630,
+      "onTimeDeliveryRate": 93.7
+    }
+  ],
+  "exceptions": [
+    {
+      "shipmentId": "SHP-2847001",
+      "region": "Southeast",
+      "exceptionType": "Delayed shipment",
+      "severity": "high",
+      "status": "In Progress"
+    },
+    {
+      "shipmentId": "SHP-2847002",
+      "region": "West",
+      "exceptionType": "Weather disruption",
+      "severity": "medium",
+      "status": "Monitoring"
+    },
+    {
+      "shipmentId": "SHP-2847003",
+      "region": "Midwest",
+      "exceptionType": "Carrier issue",
+      "severity": "medium",
+      "status": "Pending Resolution"
+    },
+    {
+      "shipmentId": "SHP-2847004",
+      "region": "Southeast",
+      "exceptionType": "Missing documentation",
+      "severity": "low",
+      "status": "Resolved"
+    },
+    {
+      "shipmentId": "SHP-2847005",
+      "region": "Northeast",
+      "exceptionType": "Capacity constraint",
+      "severity": "medium",
+      "status": "In Progress"
+    },
+    {
+      "shipmentId": "SHP-2847006",
+      "region": "Southeast",
+      "exceptionType": "Delayed shipment",
+      "severity": "high",
+      "status": "In Progress"
+    },
+    {
+      "shipmentId": "SHP-2847007",
+      "region": "West",
+      "exceptionType": "Weather disruption",
+      "severity": "low",
+      "status": "Resolved"
+    },
+    {
+      "shipmentId": "SHP-2847008",
+      "region": "Midwest",
+      "exceptionType": "Carrier issue",
+      "severity": "high",
+      "status": "Escalated"
+    },
+    {
+      "shipmentId": "SHP-2847009",
+      "region": "Northeast",
+      "exceptionType": "Missing documentation",
+      "severity": "low",
+      "status": "Resolved"
+    },
+    {
+      "shipmentId": "SHP-2847010",
+      "region": "Southeast",
+      "exceptionType": "Capacity constraint",
+      "severity": "high",
+      "status": "In Progress"
+    },
+    {
+      "shipmentId": "SHP-2847011",
+      "region": "West",
+      "exceptionType": "Delayed shipment",
+      "severity": "medium",
+      "status": "Pending Resolution"
+    },
+    {
+      "shipmentId": "SHP-2847012",
+      "region": "Midwest",
+      "exceptionType": "Weather disruption",
+      "severity": "low",
+      "status": "Resolved"
+    },
+    {
+      "shipmentId": "SHP-2847013",
+      "region": "Northeast",
+      "exceptionType": "Carrier issue",
+      "severity": "high",
+      "status": "In Progress"
+    },
+    {
+      "shipmentId": "SHP-2847014",
+      "region": "Southeast",
+      "exceptionType": "Missing documentation",
+      "severity": "medium",
+      "status": "Pending Resolution"
+    },
+    {
+      "shipmentId": "SHP-2847015",
+      "region": "West",
+      "exceptionType": "Capacity constraint",
+      "severity": "low",
+      "status": "Monitoring"
+    },
+    {
+      "shipmentId": "SHP-2847016",
+      "region": "Midwest",
+      "exceptionType": "Delayed shipment",
+      "severity": "high",
+      "status": "Escalated"
+    },
+    {
+      "shipmentId": "SHP-2847017",
+      "region": "Northeast",
+      "exceptionType": "Weather disruption",
+      "severity": "medium",
+      "status": "In Progress"
+    },
+    {
+      "shipmentId": "SHP-2847018",
+      "region": "Southeast",
+      "exceptionType": "Carrier issue",
+      "severity": "low",
+      "status": "Resolved"
+    }
+  ]
+}

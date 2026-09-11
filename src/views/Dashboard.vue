@@ -20,46 +20,42 @@
       <!-- Filters Section -->
       <v-row class="mb-6">
         <v-col cols="12">
-          <v-card class="filters-card">
-            <v-card-text>
-              <p class="placeholder-text">Filters go here</p>
-            </v-card-text>
-          </v-card>
+          <RegionFilter />
         </v-col>
       </v-row>
 
       <!-- KPI Cards Section -->
-      <v-row class="mb-6">
+      <v-row v-if="metrics" class="mb-6">
         <v-col cols="12" sm="6" md="3">
           <MetricCard
             label="Total Shipments"
-            value="2,847"
-            trend="+12% from last period"
-            trend-direction="up"
+            :value="metrics.totalShipments.current"
+            :trend="metrics.totalShipments.trend"
+            :trend-direction="metrics.totalShipments.direction"
           />
         </v-col>
         <v-col cols="12" sm="6" md="3">
           <MetricCard
             label="On-Time Delivery Rate"
-            value="94.2%"
-            trend="+2.1% from last period"
-            trend-direction="up"
+            :value="metrics.onTimeDeliveryRate.current"
+            :trend="metrics.onTimeDeliveryRate.trend"
+            :trend-direction="metrics.onTimeDeliveryRate.direction"
           />
         </v-col>
         <v-col cols="12" sm="6" md="3">
           <MetricCard
             label="Average Transit Time"
-            value="2.3 days"
-            trend="-0.2 days from last period"
-            trend-direction="down"
+            :value="metrics.averageTransitTime.current"
+            :trend="metrics.averageTransitTime.trend"
+            :trend-direction="metrics.averageTransitTime.direction"
           />
         </v-col>
         <v-col cols="12" sm="6" md="3">
           <MetricCard
             label="Open Exceptions"
-            value="18"
-            trend="+3 from last period"
-            trend-direction="down"
+            :value="metrics.openExceptions.current"
+            :trend="metrics.openExceptions.trend"
+            :trend-direction="metrics.openExceptions.direction"
           />
         </v-col>
       </v-row>
@@ -73,7 +69,7 @@
             </v-card-item>
             <v-card-text>
               <div class="placeholder-container">
-                <p class="placeholder-text">Shipment volume visualization goes here</p>
+                <p class="placeholder-text">Shipment volume chart placeholder ({{ shipmentVolumeData.length }} data points)</p>
               </div>
             </v-card-text>
           </v-card>
@@ -88,9 +84,7 @@
               <v-card-title>Regional Performance</v-card-title>
             </v-card-item>
             <v-card-text>
-              <div class="placeholder-container">
-                <p class="placeholder-text">Regional performance table/grid goes here</p>
-              </div>
+              <RegionalPerformanceTable />
             </v-card-text>
           </v-card>
         </v-col>
@@ -101,12 +95,10 @@
         <v-col cols="12">
           <v-card class="section-card">
             <v-card-item>
-              <v-card-title>Open Exceptions</v-card-title>
+              <v-card-title>Open Exceptions ({{ exceptionCount }} total)</v-card-title>
             </v-card-item>
             <v-card-text>
-              <div class="placeholder-container">
-                <p class="placeholder-text">Exceptions table goes here</p>
-              </div>
+              <ExceptionsTable />
             </v-card-text>
           </v-card>
         </v-col>
@@ -116,7 +108,18 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import MetricCard from '../components/MetricCard.vue'
+import RegionFilter from '../components/RegionFilter.vue'
+import RegionalPerformanceTable from '../components/RegionalPerformanceTable.vue'
+import ExceptionsTable from '../components/ExceptionsTable.vue'
+import { useDashboardData } from '@/composables/useDashboardData'
+
+const { getMetrics, getShipmentVolumeData, getExceptions } = useDashboardData()
+
+const metrics = computed(() => getMetrics.value)
+const shipmentVolumeData = computed(() => getShipmentVolumeData.value)
+const exceptionCount = computed(() => getExceptions.value.length)
 </script>
 
 <style scoped>
@@ -153,11 +156,6 @@ import MetricCard from '../components/MetricCard.vue'
   font-size: 0.95rem;
   color: #666;
   margin: 0;
-}
-
-.filters-card {
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
 }
 
 .section-card {
