@@ -27,7 +27,10 @@ export interface ShipmentDataPoint {
   volume: number
 }
 
-export function useDashboardData() {
+// Global state - shared across all component instances
+let dashboardState: ReturnType<typeof createDashboardState> | null = null
+
+function createDashboardState() {
   const selectedRegion = ref('All Regions')
 
   // Get the available regions
@@ -164,4 +167,11 @@ export function useDashboardData() {
     getRegionalPerformance,
     getExceptions
   }
+}
+
+export function useDashboardData() {
+  if (!dashboardState) {
+    dashboardState = createDashboardState()
+  }
+  return dashboardState
 }

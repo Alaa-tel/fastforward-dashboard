@@ -4,14 +4,12 @@
       <div class="filter-container">
         <label class="filter-label">Filter by Region:</label>
         <v-select
-          :model-value="selectedRegion"
-          @update:model-value="selectedRegion = $event"
+          v-model="selectedRegion"
           :items="regions"
           variant="outlined"
           density="compact"
           class="region-select"
           hide-details
-          clearable
         ></v-select>
       </div>
     </v-card-text>
