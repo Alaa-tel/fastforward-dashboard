@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard-wrapper">
+  <div class="dashboard-layout">
     <!-- App Bar Header -->
     <v-app-bar elevation="1" class="app-header">
       <v-toolbar-title class="header-title">FastForward Logistics</v-toolbar-title>
@@ -7,123 +7,122 @@
       <div class="header-subtitle">Internal Operations Portal</div>
     </v-app-bar>
 
-    <!-- Main Content -->
-    <v-container fluid class="dashboard-content">
+    <!-- Main Content Container -->
+    <div class="dashboard-content">
       <!-- Title Section -->
-      <div class="title-section">
-        <h2 class="page-title">Executive Operations Dashboard</h2>
+      <div class="page-header">
+        <h1 class="page-title">Executive Operations Dashboard</h1>
         <p class="page-description">Real-time view of logistics operations and performance</p>
       </div>
 
-      <!-- Filters Section -->
-      <div class="filters-section">
+      <!-- Region Filter -->
+      <div class="filter-bar">
         <RegionFilter />
       </div>
 
       <!-- KPI Cards Section -->
       <div class="kpi-section" v-if="metrics">
-        <v-row class="kpi-row">
-          <v-col cols="12" sm="6" lg="3">
-            <MetricCard
-              label="Total Shipments"
-              :value="metrics.totalShipments.current"
-              :trend="metrics.totalShipments.trend"
-              :trend-direction="metrics.totalShipments.direction"
-            />
-          </v-col>
-          <v-col cols="12" sm="6" lg="3">
-            <MetricCard
-              label="On-Time Delivery Rate"
-              :value="metrics.onTimeDeliveryRate.current"
-              :trend="metrics.onTimeDeliveryRate.trend"
-              :trend-direction="metrics.onTimeDeliveryRate.direction"
-            />
-          </v-col>
-          <v-col cols="12" sm="6" lg="3">
-            <MetricCard
-              label="Average Transit Time"
-              :value="metrics.averageTransitTime.current"
-              :trend="metrics.averageTransitTime.trend"
-              :trend-direction="metrics.averageTransitTime.direction"
-            />
-          </v-col>
-          <v-col cols="12" sm="6" lg="3">
-            <MetricCard
-              label="Open Exceptions"
-              :value="metrics.openExceptions.current"
-              :trend="metrics.openExceptions.trend"
-              :trend-direction="metrics.openExceptions.direction"
-            />
-          </v-col>
-        </v-row>
+        <div class="kpi-grid">
+          <MetricCard
+            label="Total Shipments"
+            :value="metrics.totalShipments.current"
+            :trend="metrics.totalShipments.trend"
+            :trend-direction="metrics.totalShipments.direction"
+          />
+          <MetricCard
+            label="On-Time Delivery Rate"
+            :value="metrics.onTimeDeliveryRate.current"
+            :trend="metrics.onTimeDeliveryRate.trend"
+            :trend-direction="metrics.onTimeDeliveryRate.direction"
+          />
+          <MetricCard
+            label="Average Transit Time"
+            :value="metrics.averageTransitTime.current"
+            :trend="metrics.averageTransitTime.trend"
+            :trend-direction="metrics.averageTransitTime.direction"
+          />
+          <MetricCard
+            label="Open Exceptions"
+            :value="metrics.openExceptions.current"
+            :trend="metrics.openExceptions.trend"
+            :trend-direction="metrics.openExceptions.direction"
+          />
+        </div>
       </div>
 
-      <!-- Shipment Volume Section -->
-      <div class="section-wrapper">
-        <v-card class="section-card">
-          <v-card-item class="section-header">
-            <template #title>
-              <span class="section-title">Shipment Volume</span>
-              <span class="section-subtitle">({{ shipmentVolumeData.length }} days tracked)</span>
-            </template>
-          </v-card-item>
-          <v-card-text class="section-content">
-            <div class="placeholder-container">
-              <p class="placeholder-text">Chart visualization coming soon</p>
-            </div>
-          </v-card-text>
-        </v-card>
+      <!-- Shipment Volume Chart Section -->
+      <div class="section-card">
+        <div class="section-header">
+          <h2 class="section-title">Shipment Volume</h2>
+          <p class="section-subtitle">15-day trend</p>
+        </div>
+        <div class="section-body">
+          <ShipmentVolumeChart />
+        </div>
       </div>
 
-      <!-- Regional Performance Section -->
-      <div class="section-wrapper">
-        <v-card class="section-card">
-          <v-card-item class="section-header">
-            <template #title>
-              <span class="section-title">Regional Performance</span>
-            </template>
-          </v-card-item>
-          <v-card-text class="section-content">
-            <RegionalPerformanceTable />
-          </v-card-text>
-        </v-card>
+      <!-- Charts Grid Section -->
+      <div class="charts-grid">
+        <!-- Delivery Performance Chart -->
+        <div class="section-card">
+          <div class="section-header">
+            <h2 class="section-title">Regional Performance</h2>
+            <p class="section-subtitle">On-time delivery by region</p>
+          </div>
+          <div class="section-body chart-body">
+            <DeliveryPerformanceChart />
+          </div>
+        </div>
+
+        <!-- Exception Breakdown Chart -->
+        <div class="section-card">
+          <div class="section-header">
+            <h2 class="section-title">Exception Breakdown</h2>
+            <p class="section-subtitle">Distribution of open exceptions</p>
+          </div>
+          <div class="section-body chart-body">
+            <ExceptionBreakdownChart />
+          </div>
+        </div>
       </div>
 
-      <!-- Open Exceptions Section -->
-      <div class="section-wrapper">
-        <v-card class="section-card">
-          <v-card-item class="section-header">
-            <template #title>
-              <span class="section-title">Open Exceptions</span>
-              <v-chip class="exception-count" size="small" variant="tonal">{{ exceptionCount }}</v-chip>
-            </template>
-          </v-card-item>
-          <v-card-text class="section-content">
-            <ExceptionsTable />
-          </v-card-text>
-        </v-card>
+      <!-- Open Exceptions Table Section -->
+      <div class="section-card">
+        <div class="section-header">
+          <div class="header-title-with-chip">
+            <h2 class="section-title">Open Exceptions</h2>
+            <div class="exception-badge">{{ exceptionCount }}</div>
+          </div>
+          <p class="section-subtitle">Detailed exception log</p>
+        </div>
+        <div class="section-body">
+          <ExceptionsTable />
+        </div>
       </div>
-    </v-container>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import MetricCard from '../components/MetricCard.vue'
-import RegionFilter from '../components/RegionFilter.vue'
-import RegionalPerformanceTable from '../components/RegionalPerformanceTable.vue'
-import ExceptionsTable from '../components/ExceptionsTable.vue'
+import MetricCard from '@/components/MetricCard.vue'
+import RegionFilter from '@/components/RegionFilter.vue'
+import ExceptionsTable from '@/components/ExceptionsTable.vue'
+import ShipmentVolumeChart from '@/components/ShipmentVolumeChart.vue'
+import DeliveryPerformanceChart from '@/components/DeliveryPerformanceChart.vue'
+import ExceptionBreakdownChart from '@/components/ExceptionBreakdownChart.vue'
 import { useDashboardData } from '@/composables/useDashboardData'
 
-const { getMetrics, getShipmentVolumeData, getExceptions } = useDashboardData()
+const { getMetrics, getExceptions } = useDashboardData()
 
 const metrics = computed(() => getMetrics.value)
-const shipmentVolumeData = computed(() => getShipmentVolumeData.value)
 const exceptionCount = computed(() => getExceptions.value.length)
 </script>
 
 <style scoped>
-.dashboard-wrapper {
+.dashboard-layout {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   background-color: #f9fafb;
 }
@@ -132,6 +131,7 @@ const exceptionCount = computed(() => getExceptions.value.length)
   background-color: #ffffff !important;
   border-bottom: 1px solid #e5e7eb;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
 }
 
 .header-title {
@@ -147,21 +147,23 @@ const exceptionCount = computed(() => getExceptions.value.length)
   font-weight: 500;
 }
 
+/* Content below app bar */
 .dashboard-content {
+  flex: 1;
+  overflow-y: auto;
   padding: 2rem 1rem;
-  max-width: 1280px;
 }
 
-.title-section {
+/* Page header */
+.page-header {
   margin-bottom: 2rem;
-  padding-bottom: 0.5rem;
 }
 
 .page-title {
-  font-size: 1.875rem;
+  font-size: 2rem;
   font-weight: 700;
   color: #111827;
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 0.5rem 0;
   letter-spacing: -0.5px;
 }
 
@@ -172,28 +174,31 @@ const exceptionCount = computed(() => getExceptions.value.length)
   font-weight: 500;
 }
 
-.filters-section {
+/* Filter bar */
+.filter-bar {
   margin-bottom: 2.5rem;
+  max-width: 400px;
 }
 
+/* KPI Section */
 .kpi-section {
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
 }
 
-.kpi-row {
-  row-gap: 1.5rem;
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
 }
 
-.section-wrapper {
-  margin-bottom: 2.5rem;
-}
-
+/* Section Cards */
 .section-card {
+  background-color: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  background-color: #ffffff;
   overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
 }
 
 .section-header {
@@ -207,43 +212,52 @@ const exceptionCount = computed(() => getExceptions.value.length)
   font-weight: 700;
   color: #111827;
   letter-spacing: -0.25px;
+  margin: 0;
 }
 
 .section-subtitle {
-  margin-left: 0.75rem;
-  font-size: 0.875rem;
-  font-weight: 400;
+  font-size: 0.85rem;
   color: #9ca3af;
+  font-weight: 500;
+  margin: 0.25rem 0 0 0;
 }
 
-.exception-count {
-  margin-left: 0.75rem;
+.header-title-with-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.exception-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  background-color: #fee2e2;
+  color: #991b1b;
   font-weight: 600;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
+  border-radius: 4px;
 }
 
-.section-content {
+.section-body {
   padding: 1.5rem;
 }
 
-.placeholder-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 240px;
-  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
-  border: 2px dashed #d1d5db;
-  border-radius: 6px;
+.chart-body {
+  padding: 1rem 1.5rem;
 }
 
-.placeholder-text {
-  color: #9ca3af;
-  font-size: 0.95rem;
-  margin: 0;
-  font-weight: 500;
+/* Charts Grid */
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 
-/* Responsive adjustments */
+/* Responsive Design */
 @media (max-width: 1024px) {
   .dashboard-content {
     padding: 1.5rem 1rem;
@@ -253,45 +267,53 @@ const exceptionCount = computed(() => getExceptions.value.length)
     font-size: 1.5rem;
   }
 
-  .section-wrapper {
-    margin-bottom: 2rem;
+  .kpi-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .charts-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 }
 
 @media (max-width: 640px) {
   .dashboard-content {
-    padding: 1rem;
-  }
-
-  .title-section {
-    margin-bottom: 1.5rem;
+    padding: 1rem 0.75rem;
   }
 
   .page-title {
-    font-size: 1.25rem;
+    font-size: 1.375rem;
   }
 
   .page-description {
     font-size: 0.875rem;
   }
 
-  .filters-section {
-    margin-bottom: 2rem;
+  .filter-bar {
+    margin-bottom: 1.5rem;
   }
 
   .kpi-section {
     margin-bottom: 2rem;
   }
 
-  .section-wrapper {
+  .kpi-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .section-card {
     margin-bottom: 1.5rem;
+    border-radius: 6px;
   }
 
   .section-header {
     padding: 1rem;
   }
 
-  .section-content {
+  .section-body {
     padding: 1rem;
   }
 
@@ -299,8 +321,27 @@ const exceptionCount = computed(() => getExceptions.value.length)
     font-size: 1rem;
   }
 
-  .placeholder-container {
-    min-height: 180px;
+  .charts-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
+}
+
+/* Scrollbar styling for better UX */
+.dashboard-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dashboard-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dashboard-content::-webkit-scrollbar-thumb {
+  background-color: #d1d5db;
+  border-radius: 4px;
+}
+
+.dashboard-content::-webkit-scrollbar-thumb:hover {
+  background-color: #9ca3af;
 }
 </style>
