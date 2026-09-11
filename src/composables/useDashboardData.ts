@@ -31,13 +31,13 @@ export function useDashboardData() {
   const selectedRegion = ref('All Regions')
 
   // Get the available regions
-  const regions = computed(() => [
+  const regions = [
     'All Regions',
     'Northeast',
     'Southeast',
     'Midwest',
     'West'
-  ])
+  ]
 
   // Calculate trend direction
   const calculateTrendDirection = (current: number, previous: number): 'up' | 'down' | 'neutral' => {
