@@ -51,7 +51,7 @@ const chartData = computed(() => ({
 
 const chartOptions = computed(() => ({
   responsive: true,
-  maintainAspectRatio: true,
+  maintainAspectRatio: false,
   plugins: {
     legend: {
       position: 'right' as const,
@@ -59,7 +59,7 @@ const chartOptions = computed(() => ({
         color: '#6b7280',
         font: {
           size: 12,
-          weight: 500
+          weight: 500 as const
         },
         padding: 16,
         usePointStyle: true,
@@ -94,7 +94,6 @@ const chartOptions = computed(() => ({
     <Doughnut
       :data="chartData"
       :options="chartOptions"
-      :height="200"
     />
   </div>
 </template>
@@ -103,6 +102,10 @@ const chartOptions = computed(() => ({
 .chart-container {
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 100%;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

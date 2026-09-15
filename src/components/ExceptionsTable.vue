@@ -67,7 +67,7 @@ const severityClass = (severity: string): string => {
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  padding: 1rem;
+  padding: 0.75rem 1rem;
   text-align: left;
   border-bottom: 2px solid #e5e7eb;
 }
@@ -119,7 +119,7 @@ const severityClass = (severity: string): string => {
 }
 
 .exceptions-table td {
-  padding: 1rem;
+  padding: 0.75rem 1rem;
   color: #374151;
   font-size: 0.95rem;
   vertical-align: middle;

@@ -46,7 +46,7 @@ const chartData = computed(() => ({
 const chartOptions = computed(() => ({
   indexAxis: 'y' as const,
   responsive: true,
-  maintainAspectRatio: true,
+  maintainAspectRatio: false,
   interaction: {
     intersect: false,
     mode: 'index' as const
@@ -102,9 +102,10 @@ const chartOptions = computed(() => ({
       ticks: {
         color: '#6b7280',
         font: {
-          size: 11,
+          size: 12,
           weight: 500 as const
-        }
+        },
+        padding: 12
       }
     }
   }
@@ -116,7 +117,6 @@ const chartOptions = computed(() => ({
     <Bar
       :data="chartData"
       :options="chartOptions"
-      :height="200"
     />
   </div>
 </template>
@@ -125,7 +125,7 @@ const chartOptions = computed(() => ({
 .chart-container {
   position: relative;
   width: 100%;
-  height: 200px;
-  padding: 0.5rem 0;
+  height: 100%;
+  min-height: 250px;
 }
 </style>

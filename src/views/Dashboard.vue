@@ -9,15 +9,17 @@
 
     <!-- Main Content Container -->
     <div class="dashboard-content">
-      <!-- Title Section -->
+      <!-- Page Header with integrated filter -->
       <div class="page-header">
-        <h1 class="page-title">Executive Operations Dashboard</h1>
-        <p class="page-description">Real-time view of logistics operations and performance</p>
-      </div>
-
-      <!-- Region Filter -->
-      <div class="filter-bar">
-        <RegionFilter />
+        <div class="header-top">
+          <div class="header-text">
+            <h1 class="page-title">Executive Operations Dashboard</h1>
+            <p class="page-description">Real-time view of logistics operations and performance</p>
+          </div>
+          <div class="header-filter">
+            <RegionFilter />
+          </div>
+        </div>
       </div>
 
       <!-- KPI Cards Section -->
@@ -51,12 +53,12 @@
       </div>
 
       <!-- Shipment Volume Chart Section -->
-      <div class="section-card">
+      <div class="section-card full-width">
         <div class="section-header">
           <h2 class="section-title">Shipment Volume</h2>
           <p class="section-subtitle">15-day trend</p>
         </div>
-        <div class="section-body">
+        <div class="section-body chart-body-large">
           <ShipmentVolumeChart />
         </div>
       </div>
@@ -69,7 +71,7 @@
             <h2 class="section-title">Regional Performance</h2>
             <p class="section-subtitle">On-time delivery by region</p>
           </div>
-          <div class="section-body chart-body">
+          <div class="section-body chart-body-medium">
             <DeliveryPerformanceChart />
           </div>
         </div>
@@ -80,14 +82,14 @@
             <h2 class="section-title">Exception Breakdown</h2>
             <p class="section-subtitle">Distribution of open exceptions</p>
           </div>
-          <div class="section-body chart-body">
+          <div class="section-body chart-body-medium">
             <ExceptionBreakdownChart />
           </div>
         </div>
       </div>
 
       <!-- Open Exceptions Table Section -->
-      <div class="section-card">
+      <div class="section-card full-width">
         <div class="section-header">
           <div class="header-title-with-chip">
             <h2 class="section-title">Open Exceptions</h2>
@@ -95,7 +97,7 @@
           </div>
           <p class="section-subtitle">Detailed exception log</p>
         </div>
-        <div class="section-body">
+        <div class="section-body table-body">
           <ExceptionsTable />
         </div>
       </div>
@@ -152,11 +154,25 @@ const exceptionCount = computed(() => getExceptions.value.length)
   flex: 1;
   overflow-y: auto;
   padding: 2rem 1rem;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
 }
 
-/* Page header */
+/* Page header with integrated filter */
 .page-header {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.header-text {
+  flex: 1;
 }
 
 .page-title {
@@ -165,6 +181,7 @@ const exceptionCount = computed(() => getExceptions.value.length)
   color: #111827;
   margin: 0 0 0.5rem 0;
   letter-spacing: -0.5px;
+  line-height: 1.2;
 }
 
 .page-description {
@@ -174,10 +191,9 @@ const exceptionCount = computed(() => getExceptions.value.length)
   font-weight: 500;
 }
 
-/* Filter bar */
-.filter-bar {
-  margin-bottom: 2.5rem;
-  max-width: 400px;
+.header-filter {
+  flex-shrink: 0;
+  min-width: 250px;
 }
 
 /* KPI Section */
@@ -187,7 +203,7 @@ const exceptionCount = computed(() => getExceptions.value.length)
 
 .kpi-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
 
@@ -198,13 +214,23 @@ const exceptionCount = computed(() => getExceptions.value.length)
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.section-card.full-width {
   margin-bottom: 2rem;
+}
+
+.section-card:not(.full-width) {
+  margin-bottom: 0;
 }
 
 .section-header {
   padding: 1.5rem;
   border-bottom: 1px solid #f3f4f6;
   background-color: #fafbfc;
+  flex-shrink: 0;
 }
 
 .section-title {
@@ -239,28 +265,75 @@ const exceptionCount = computed(() => getExceptions.value.length)
   font-weight: 600;
   font-size: 0.875rem;
   border-radius: 4px;
+  flex-shrink: 0;
 }
 
+/* Section body with different sizing */
 .section-body {
+  flex: 1;
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.chart-body {
-  padding: 1rem 1.5rem;
+.chart-body-large {
+  padding: 1.5rem;
+  min-height: 380px;
+}
+
+.chart-body-medium {
+  padding: 1.5rem;
+  min-height: 300px;
+}
+
+.table-body {
+  padding: 0;
+  overflow-x: auto;
 }
 
 /* Charts Grid */
 .charts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 2rem;
   margin-bottom: 2rem;
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .dashboard-content {
+    max-width: 100%;
+    padding: 1.5rem 1rem;
+  }
+
+  .page-title {
+    font-size: 1.75rem;
+  }
+
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .charts-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
 @media (max-width: 1024px) {
   .dashboard-content {
     padding: 1.5rem 1rem;
+  }
+
+  .header-top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+
+  .header-filter {
+    min-width: auto;
   }
 
   .page-title {
@@ -268,7 +341,7 @@ const exceptionCount = computed(() => getExceptions.value.length)
   }
 
   .kpi-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 
@@ -276,11 +349,19 @@ const exceptionCount = computed(() => getExceptions.value.length)
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
+
+  .chart-body-large {
+    min-height: 320px;
+  }
+
+  .chart-body-medium {
+    min-height: 280px;
+  }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .dashboard-content {
-    padding: 1rem 0.75rem;
+    padding: 1.25rem 0.75rem;
   }
 
   .page-title {
@@ -291,21 +372,70 @@ const exceptionCount = computed(() => getExceptions.value.length)
     font-size: 0.875rem;
   }
 
-  .filter-bar {
+  .kpi-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .charts-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .chart-body-large {
+    min-height: 280px;
+    padding: 1rem;
+  }
+
+  .chart-body-medium {
+    min-height: 240px;
+    padding: 1rem;
+  }
+
+  .section-header {
+    padding: 1.25rem;
+  }
+
+  .section-body {
+    padding: 1rem;
+  }
+
+  .section-card.full-width {
     margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard-content {
+    padding: 1rem 0.5rem;
+  }
+
+  .header-top {
+    gap: 1rem;
+  }
+
+  .page-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .page-description {
+    font-size: 0.8125rem;
+  }
+
+  .header-filter {
+    width: 100%;
+  }
+
+  .page-header {
+    margin-bottom: 2rem;
   }
 
   .kpi-section {
     margin-bottom: 2rem;
   }
 
-  .kpi-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
   .section-card {
-    margin-bottom: 1.5rem;
     border-radius: 6px;
   }
 
@@ -313,17 +443,22 @@ const exceptionCount = computed(() => getExceptions.value.length)
     padding: 1rem;
   }
 
-  .section-body {
-    padding: 1rem;
-  }
-
   .section-title {
     font-size: 1rem;
   }
 
-  .charts-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+  .section-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .chart-body-large {
+    min-height: 240px;
+    padding: 0.75rem;
+  }
+
+  .chart-body-medium {
+    min-height: 200px;
+    padding: 0.75rem;
   }
 }
 

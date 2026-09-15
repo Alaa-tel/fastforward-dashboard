@@ -53,7 +53,7 @@ const chartData = computed(() => ({
 
 const chartOptions = computed(() => ({
   responsive: true,
-  maintainAspectRatio: true,
+  maintainAspectRatio: false,
   interaction: {
     intersect: false,
     mode: 'index' as const
@@ -122,7 +122,6 @@ const chartOptions = computed(() => ({
     <Line
       :data="chartData"
       :options="chartOptions"
-      :height="300"
     />
   </div>
 </template>
@@ -131,7 +130,7 @@ const chartOptions = computed(() => ({
 .chart-container {
   position: relative;
   width: 100%;
-  height: 300px;
-  padding: 0.5rem 0;
+  height: 100%;
+  min-height: 300px;
 }
 </style>
