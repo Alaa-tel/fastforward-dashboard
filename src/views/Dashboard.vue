@@ -1,11 +1,12 @@
 <template>
   <div class="dashboard-layout">
     <!-- App Bar Header -->
-    <v-app-bar elevation="1" class="app-header">
-      <v-toolbar-title class="header-title">FastForward Logistics</v-toolbar-title>
-      <v-spacer></v-spacer>
-      <div class="header-subtitle">Internal Operations Portal</div>
-    </v-app-bar>
+    <header class="app-header">
+      <div class="app-header-inner">
+        <span class="header-title">FastForward Logistics</span>
+        <span class="header-subtitle">Internal Operations Portal</span>
+      </div>
+    </header>
 
     <!-- Main Content Container -->
     <div class="dashboard-content">
@@ -130,10 +131,25 @@ const exceptionCount = computed(() => getExceptions.value.length)
 }
 
 .app-header {
-  background-color: #ffffff !important;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #ffffff;
   border-bottom: 1px solid #e5e7eb;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   flex-shrink: 0;
+}
+
+.app-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  height: 64px;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .header-title {
